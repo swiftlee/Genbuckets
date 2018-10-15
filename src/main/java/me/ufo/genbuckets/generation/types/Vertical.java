@@ -4,6 +4,7 @@ import me.ufo.genbuckets.generation.Generation;
 import me.ufo.genbuckets.generation.GenerationType;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.util.Vector;
 
 public class Vertical extends Generation {
 
@@ -16,20 +17,15 @@ public class Vertical extends Generation {
 
     @Override
     public void generate() {
-        int x = this.getBlock().getX();
-        int y = this.getBlock().getY();
-        int z = this.getBlock().getZ();
+        Block toGenerate = this.getBlock().getLocation().add(new Vector(0, -getY(), 0)).getBlock();
+        Block belowToGenerate = toGenerate.getLocation().add(new Vector(0, -1, 0)).getBlock();
 
-        Block toGenenerate = this.getBlock().getWorld().getBlockAt(x, y - getY(), z);
+        setY(getY() + 1);
 
-        int minusY = getY() + 1;
-
-        setY(minusY);
-
-        if (y - minusY > 0 && this.getBlock().getWorld().getBlockAt(x, y - minusY, z).getType() == Material.AIR) {
-            toGenenerate.setType(this.getMaterial());
+        if (belowToGenerate.getY() > 0 && belowToGenerate.getType() == Material.AIR) {
+            toGenerate.setType(this.getMaterial());
         } else {
-            toGenenerate.setType(this.getMaterial());
+            toGenerate.setType(this.getMaterial());
             this.setCompleted(true);
         }
     }
