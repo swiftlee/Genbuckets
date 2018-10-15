@@ -9,11 +9,11 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class GenerationTask implements Runnable {
 
-    private static ConcurrentHashMap<UUID, Generation> generations = new ConcurrentHashMap<>();
     private int taskID;
+    private static ConcurrentHashMap<UUID, Generation> generations = new ConcurrentHashMap<>();
 
     private void runTask() {
-        taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(Genbuckets.getInstance(), this, 0L, 15L);
+        taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(Genbuckets.getInstance(), this, 15L, 15L);
     }
 
     private void haltTask() {
@@ -39,7 +39,7 @@ public class GenerationTask implements Runnable {
     }
 
     public void addGeneration(Generation generation) {
-        if (generations.size() == 0) {
+        if (generations.isEmpty()) {
             this.runTask();
         }
 
