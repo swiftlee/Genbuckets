@@ -13,10 +13,12 @@ public class GenerationTask implements Runnable {
     private static ConcurrentHashMap<UUID, Generation> generations = new ConcurrentHashMap<>();
 
     private void runTask() {
+        System.out.println("start");
         taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(Genbuckets.getInstance(), this, 15L, 15L);
     }
 
     private void haltTask() {
+        System.out.println("stop");
         Bukkit.getServer().getScheduler().cancelTask(taskID);
     }
 
@@ -24,7 +26,7 @@ public class GenerationTask implements Runnable {
     public void run() {
         if (generations.size() > 0) {
 
-            generations.forEach((uuid, generation) ->  {
+            generations.forEach((uuid, generation) -> {
                 if (generation.isCompleted()) {
                     generations.remove(uuid, generation);
                     return;

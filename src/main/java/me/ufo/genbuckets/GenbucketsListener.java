@@ -17,4 +17,5 @@ public class GenbucketsListener implements Listener {
             Genbuckets.getInstance().getGenerationTask().addGeneration(new Vertical(Material.COBBLESTONE, event.getBlockClicked().getRelative(event.getBlockFace())));
         }
     }
+
 }

@@ -24,7 +24,7 @@ public class Vertical extends Generation {
 
         int minusY = getY() + 1;
 
-        setY(getY() + 1);
+        setY(minusY);
 
         if (y - minusY > 0 && this.getBlock().getWorld().getBlockAt(x, y - minusY, z).getType() == Material.AIR) {
             toGenenerate.setType(this.getMaterial());
