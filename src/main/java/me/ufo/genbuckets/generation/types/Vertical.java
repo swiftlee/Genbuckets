@@ -16,7 +16,6 @@ public class Vertical extends Generation {
 
     @Override
     public void generate() {
-        System.out.println("generating");
         int x = this.getBlock().getX();
         int y = this.getBlock().getY();
         int z = this.getBlock().getZ();

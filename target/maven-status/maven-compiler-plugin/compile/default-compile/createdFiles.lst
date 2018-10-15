@@ -1,0 +1,9 @@
+me\ufo\genbuckets\util\Style.class
+me\ufo\genbuckets\task\GenerationTask.class
+me\ufo\genbuckets\generation\types\VerticalM.class
+me\ufo\genbuckets\Genbuckets.class
+me\ufo\genbuckets\generation\types\Horizontal.class
+me\ufo\genbuckets\generation\Generation.class
+me\ufo\genbuckets\generation\GenerationType.class
+me\ufo\genbuckets\generation\types\Vertical.class
+me\ufo\genbuckets\GenbucketsListener.class
