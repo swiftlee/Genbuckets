@@ -9,8 +9,7 @@ import org.bukkit.util.Vector;
 public class Vertical extends Generation {
 
     public Vertical(Material material, Block block) {
-        super(GenerationType.VERTICAL_NO_MECHANICS, material, block);
-        setY(1);
+        super(GenerationType.VERTICAL, material, block);
 
         block.setType(material);
     }

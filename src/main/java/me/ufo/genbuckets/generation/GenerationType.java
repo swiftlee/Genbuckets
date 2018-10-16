@@ -5,9 +5,9 @@ package me.ufo.genbuckets.generation;
  */
 public enum GenerationType {
 
-    VERTICAL_MECHANICS,
+    VERTICAL_GRAVITY,
 
-    VERTICAL_NO_MECHANICS,
-    HORIZONTAL_NO_MECHANICS;
+    VERTICAL,
+    HORIZONTAL;
 
 }

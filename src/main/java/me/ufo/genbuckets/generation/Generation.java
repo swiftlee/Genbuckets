@@ -8,7 +8,7 @@ public abstract class Generation {
     private GenerationType generationType;
     private Material material;
     private Block block;
-    private int y = 0;
+    private int y = 1;
     private boolean completed;
 
     public abstract void generate();
@@ -19,6 +19,9 @@ public abstract class Generation {
         this.block = block;
     }
 
+    public GenerationType getGenerationType() {
+        return generationType;
+    }
 
     public Material getMaterial() {
         return material;
