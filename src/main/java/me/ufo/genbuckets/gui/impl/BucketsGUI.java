@@ -27,7 +27,7 @@ public class BucketsGUI implements GUI, InventoryHolder {
     public void onClick(Player player, int slot) {
         if (bucketSlots.containsKey(slot)) {
 
-            for (Bucket bucket : Genbuckets.getInstance().getBuckets().getBuckets()) {
+            for (Bucket bucket : Genbuckets.getInstance().getBuckets().getAllBuckets()) {
                 if (bucketSlots.get(slot).equals(bucket.getItemStack())) {
                     player.getInventory().addItem(bucket.getItemStack().clone());
                     player.sendMessage(Style.translate("&7You have been given a " + bucket.getName()));

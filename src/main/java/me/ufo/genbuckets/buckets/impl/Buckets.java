@@ -15,32 +15,32 @@ import java.util.Set;
 
 public class Buckets implements Item {
 
+    private Genbuckets INSTANCE = Genbuckets.getInstance();
     private Set<Bucket> buckets = new HashSet<>();
 
     @Override
     public void build() {
-        ConfigurationSection vertical = Genbuckets.getInstance().getConfig().getConfigurationSection("VERTICAL");
+        ConfigurationSection vertical = INSTANCE.getConfig().getConfigurationSection("VERTICAL");
 
         vertical.getKeys(false).forEach(key -> {
-            String name = Genbuckets.getInstance().getConfig().getString("VERTICAL." + key + ".name");
-            int slot = Genbuckets.getInstance().getConfig().getInt("VERTICAL." + key + ".slot");
+            String name = INSTANCE.getConfig().getString("VERTICAL." + key + ".name");
+            int slot = INSTANCE.getConfig().getInt("VERTICAL." + key + ".slot");
 
             ItemStack item = new ItemStack(Material.LAVA_BUCKET);
             ItemMeta itemMeta = item.getItemMeta();
             itemMeta.setDisplayName(Style.translate(name));
-            itemMeta.setLore(Style.translateLines(Genbuckets.getInstance().getConfig().getStringList("VERTICAL." + key + ".lore")));
+            itemMeta.setLore(Style.translateLines(INSTANCE.getConfig().getStringList("VERTICAL." + key + ".lore")));
             item.setItemMeta(itemMeta);
 
             Material material = Material.getMaterial(key);
-            Genbuckets.getInstance().getBucketsGUI().getBucketSlots().put(slot, item);
+            INSTANCE.getBucketsGUI().getBucketSlots().put(slot, item);
 
             buckets.add(new Bucket(name, item, GenerationType.VERTICAL, material));
-
         });
 
     }
 
-    public Set<Bucket> getBuckets() {
+    public Set<Bucket> getAllBuckets() {
         return buckets;
     }
 

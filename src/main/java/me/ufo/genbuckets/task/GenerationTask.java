@@ -10,15 +10,16 @@ import java.util.concurrent.ConcurrentHashMap;
 public class GenerationTask implements Runnable {
 
     private static ConcurrentHashMap<UUID, Generation> generations = new ConcurrentHashMap<>();
+    private Genbuckets INSTANCE = Genbuckets.getInstance();
     private int taskID;
 
     private void runTask() {
-        Genbuckets.getInstance().getLogger().info("TASK STARTED.");
-        taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(Genbuckets.getInstance(), this, 15L, 15L);
+        INSTANCE.getLogger().info("TASK STARTED.");
+        taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(INSTANCE, this, 15L, 15L);
     }
 
     private void haltTask() {
-        Genbuckets.getInstance().getLogger().info("TASK HALTED.");
+        INSTANCE.getLogger().info("TASK HALTED.");
         Bukkit.getServer().getScheduler().cancelTask(taskID);
     }
 

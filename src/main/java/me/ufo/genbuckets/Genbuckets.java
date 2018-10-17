@@ -10,6 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Genbuckets extends JavaPlugin {
 
     private static Genbuckets instance;
+
     private DataFile dataFile;
 
     private GenerationTask generationTask;

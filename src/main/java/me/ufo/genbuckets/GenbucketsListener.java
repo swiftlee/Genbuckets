@@ -13,6 +13,8 @@ import org.bukkit.inventory.ItemStack;
 
 public class GenbucketsListener implements Listener {
 
+    private Genbuckets INSTANCE = Genbuckets.getInstance();
+
     @EventHandler
     public void onPlayerBucketEmptyEvent(PlayerBucketEmptyEvent event) {
         ItemStack item = event.getPlayer().getItemInHand();
@@ -20,11 +22,11 @@ public class GenbucketsListener implements Listener {
             event.setCancelled(true);
             Block block = event.getBlockClicked().getRelative(event.getBlockFace());
 
-            for (Bucket bucket : Genbuckets.getInstance().getBuckets().getBuckets()) {
+            for (Bucket bucket : INSTANCE.getBuckets().getAllBuckets()) {
                 if (item.equals(bucket.getItemStack())) {
                     switch (bucket.getGenerationType()) {
                         case VERTICAL:
-                            Genbuckets.getInstance().getGenerationTask().addGeneration(new Vertical(bucket.getMaterial(), block));
+                            INSTANCE.getGenerationTask().addGeneration(new Vertical(bucket.getMaterial(), block));
                             break;
                     }
                     break;
@@ -39,7 +41,7 @@ public class GenbucketsListener implements Listener {
 
         if (event.getClickedInventory().getHolder() instanceof BucketsGUI) {
             event.setCancelled(true);
-            Genbuckets.getInstance().getBucketsGUI().onClick((Player) event.getWhoClicked(), event.getRawSlot());
+            INSTANCE.getBucketsGUI().onClick((Player) event.getWhoClicked(), event.getRawSlot());
         }
     }
 
