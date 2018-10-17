@@ -11,13 +11,13 @@ public abstract class Generation {
     private int y = 1;
     private boolean completed;
 
-    public abstract void generate();
-
     public Generation(GenerationType generationType, Material material, Block block) {
         this.generationType = generationType;
         this.material = material;
         this.block = block;
     }
+
+    public abstract void generate();
 
     public GenerationType getGenerationType() {
         return generationType;

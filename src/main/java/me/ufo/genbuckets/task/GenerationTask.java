@@ -9,8 +9,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class GenerationTask implements Runnable {
 
-    private int taskID;
     private static ConcurrentHashMap<UUID, Generation> generations = new ConcurrentHashMap<>();
+    private int taskID;
 
     private void runTask() {
         Genbuckets.getInstance().getLogger().info("TASK STARTED.");

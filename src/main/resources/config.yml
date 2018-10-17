@@ -1,0 +1,15 @@
+VERTICAL:
+  COBBLESTONE:
+    name: "&eCobblestone Genbucket"
+    lore:
+    - "a"
+    - "b"
+    - "c"
+    slot: 29
+  OBSIDIAN:
+    name: "&eObsidian Genbucket"
+    lore:
+    - "d"
+    - "e"
+    - "f"
+    slot: 30
