@@ -2,8 +2,8 @@ package me.ufo.genbuckets.util;
 
 import org.bukkit.ChatColor;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public final class Style {
 
@@ -15,14 +15,8 @@ public final class Style {
         return ChatColor.translateAlternateColorCodes('&', in);
     }
 
-    public static List<String> translateLines(List<String> lines) {
-        List<String> toReturn = new ArrayList<>();
-
-        for (String line : lines) {
-            toReturn.add(ChatColor.translateAlternateColorCodes('&', line));
-        }
-
-        return toReturn;
+    public static List<String> translateLines(List<String> in) {
+        return in.stream().map(s -> ChatColor.translateAlternateColorCodes('&', s)).collect(Collectors.toList());
     }
 
 }
