@@ -42,7 +42,8 @@ public class BucketsGUI implements GUI, InventoryHolder {
         }
     }
 
-    private boolean transact(Player player, Bucket bucket) {
+    @Override
+    public boolean transact(Player player, Bucket bucket) {
         double cost = bucket.getCostOfPurchase();
         if (Econ.withdrawAmountFromPlayer(player, cost)) {
             return true;
