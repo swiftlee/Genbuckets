@@ -2,7 +2,6 @@ package me.ufo.genbuckets.buckets.impl;
 
 import me.ufo.genbuckets.Genbuckets;
 import me.ufo.genbuckets.buckets.Bucket;
-import me.ufo.genbuckets.buckets.Item;
 import me.ufo.genbuckets.generation.GenerationType;
 import me.ufo.genbuckets.util.Style;
 import org.bukkit.Material;
@@ -13,12 +12,11 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Buckets implements Item {
+public class Buckets {
 
     private Genbuckets INSTANCE = Genbuckets.getInstance();
     private Set<Bucket> buckets = new HashSet<>();
 
-    @Override
     public void build() {
         ConfigurationSection vertical = INSTANCE.getConfig().getConfigurationSection("VERTICAL");
 

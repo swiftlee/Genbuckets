@@ -2,18 +2,14 @@ VERTICAL:
   COBBLESTONE:
     name: "&eCobblestone Genbucket"
     lore:
-    - "a"
-    - "b"
-    - "c"
+    - "&c$30 per use"
     slot: 29
     costOfPurchase: 20
     costOfPlacement: 30
   OBSIDIAN:
     name: "&eObsidian Genbucket"
     lore:
-    - "d"
-    - "e"
-    - "f"
+    - "&c$100 per use"
     slot: 30
     costOfPurchase: 10
     costOfPlacement: 100

@@ -32,20 +32,21 @@ public class GenbucketsListener implements Listener {
                     Player player = event.getPlayer();
 
                     if (!Factions.playerCanPlaceHere(player, block)) return;
-
-                    if (Econ.withdrawAmountFromPlayer(player, bucket.getCostOfPlacement())) {
-                        switch (bucket.getGenerationType()) {
-                            case VERTICAL:
-                                INSTANCE.getGenerationTask().addGeneration(new Vertical(bucket.getMaterial(), block));
-                                break;
-                        }
-                        break;
-                    } else {
+                    if (!Econ.withdrawAmountFromPlayer(player, bucket.getCostOfPlacement())) {
                         DecimalFormat decimalFormat = new DecimalFormat(".##");
                         double difference = bucket.getCostOfPlacement() - Econ.econ.getBalance(player);
 
                         player.sendMessage(Style.translate("&7You need &c$" + decimalFormat.format(difference) + " &7more to place this " + bucket.getName() + "&7."));
+                        return;
                     }
+
+                    switch (bucket.getGenerationType()) {
+                        case VERTICAL:
+                            INSTANCE.getGenerationTask().addGeneration(new Vertical(bucket.getMaterial(), block));
+                            break;
+                    }
+
+                    break;
                 }
             }
         }
