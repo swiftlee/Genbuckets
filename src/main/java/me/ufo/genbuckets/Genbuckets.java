@@ -4,6 +4,7 @@ import me.ufo.genbuckets.buckets.impl.Buckets;
 import me.ufo.genbuckets.commands.GenbucketsCommand;
 import me.ufo.genbuckets.gui.impl.BucketsGUI;
 import me.ufo.genbuckets.integration.Econ;
+import me.ufo.genbuckets.integration.Factions;
 import me.ufo.genbuckets.io.DataFile;
 import me.ufo.genbuckets.task.GenerationTask;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -31,6 +32,9 @@ public class Genbuckets extends JavaPlugin {
 
         Econ econ = new Econ();
         econ.setup();
+
+        Factions factions = new Factions();
+        factions.setup();
 
         this.saveDefaultConfig();
         dataFile = new DataFile("data.yml");

@@ -4,6 +4,7 @@ import me.ufo.genbuckets.buckets.Bucket;
 import me.ufo.genbuckets.generation.types.Vertical;
 import me.ufo.genbuckets.gui.impl.BucketsGUI;
 import me.ufo.genbuckets.integration.Econ;
+import me.ufo.genbuckets.integration.Factions;
 import me.ufo.genbuckets.util.Style;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -29,6 +30,8 @@ public class GenbucketsListener implements Listener {
             for (Bucket bucket : INSTANCE.getBuckets().getAllBuckets()) {
                 if (item.equals(bucket.getItemStack())) {
                     Player player = event.getPlayer();
+
+                    if (!Factions.playerCanPlaceHere(player, block)) return;
 
                     if (Econ.withdrawAmountFromPlayer(player, bucket.getCostOfPlacement())) {
                         switch (bucket.getGenerationType()) {
