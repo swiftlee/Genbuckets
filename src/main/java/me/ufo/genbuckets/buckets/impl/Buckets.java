@@ -25,6 +25,8 @@ public class Buckets implements Item {
         vertical.getKeys(false).forEach(key -> {
             String name = INSTANCE.getConfig().getString("VERTICAL." + key + ".name");
             int slot = INSTANCE.getConfig().getInt("VERTICAL." + key + ".slot");
+            double costOfPurchase = INSTANCE.getConfig().getDouble("VERTICAL." + key + ".costOfPurchase");
+            double costOfPlacement = INSTANCE.getConfig().getDouble("VERTICAL." + key + ".costOfPlacement");
 
             ItemStack item = new ItemStack(Material.LAVA_BUCKET);
             ItemMeta itemMeta = item.getItemMeta();
@@ -35,7 +37,7 @@ public class Buckets implements Item {
             Material material = Material.getMaterial(key);
             INSTANCE.getBucketsGUI().getBucketSlots().put(slot, item);
 
-            buckets.add(new Bucket(name, item, GenerationType.VERTICAL, material));
+            buckets.add(new Bucket(name, item, GenerationType.VERTICAL, material, costOfPurchase, costOfPlacement));
         });
 
     }

@@ -18,7 +18,7 @@ public class GenerationTask implements Runnable {
         taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(INSTANCE, this, 15L, 15L);
     }
 
-    private void haltTask() {
+    public void haltTask() {
         INSTANCE.getLogger().info("TASK HALTED.");
         Bukkit.getServer().getScheduler().cancelTask(taskID);
     }

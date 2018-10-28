@@ -3,6 +3,7 @@ package me.ufo.genbuckets;
 import me.ufo.genbuckets.buckets.impl.Buckets;
 import me.ufo.genbuckets.commands.GenbucketsCommand;
 import me.ufo.genbuckets.gui.impl.BucketsGUI;
+import me.ufo.genbuckets.integration.Econ;
 import me.ufo.genbuckets.io.DataFile;
 import me.ufo.genbuckets.task.GenerationTask;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -28,6 +29,9 @@ public class Genbuckets extends JavaPlugin {
 
         instance = this;
 
+        Econ econ = new Econ();
+        econ.setup();
+
         this.saveDefaultConfig();
         dataFile = new DataFile("data.yml");
         dataFile.saveDefault();
@@ -47,6 +51,8 @@ public class Genbuckets extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        this.getGenerationTask().haltTask();
+
         instance = null;
     }
 

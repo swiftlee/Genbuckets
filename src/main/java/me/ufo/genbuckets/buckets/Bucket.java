@@ -10,12 +10,16 @@ public class Bucket {
     private ItemStack itemStack;
     private GenerationType generationType;
     private Material material;
+    private double costOfPurchase;
+    private double costOfPlacement;
 
-    public Bucket(String name, ItemStack itemStack, GenerationType generationType, Material material) {
+    public Bucket(String name, ItemStack itemStack, GenerationType generationType, Material material, double costOfPurchase, double costOfPlacement) {
         this.name = name;
         this.itemStack = itemStack;
         this.generationType = generationType;
         this.material = material;
+        this.costOfPurchase = costOfPurchase;
+        this.costOfPlacement = costOfPlacement;
     }
 
     public ItemStack getItemStack() {
@@ -34,4 +38,11 @@ public class Bucket {
         return name;
     }
 
+    public double getCostOfPurchase() {
+        return costOfPurchase;
+    }
+
+    public double getCostOfPlacement() {
+        return costOfPlacement;
+    }
 }

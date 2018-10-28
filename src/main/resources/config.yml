@@ -6,6 +6,8 @@ VERTICAL:
     - "b"
     - "c"
     slot: 29
+    costOfPurchase: 20
+    costOfPlacement: 30
   OBSIDIAN:
     name: "&eObsidian Genbucket"
     lore:
@@ -13,3 +15,5 @@ VERTICAL:
     - "e"
     - "f"
     slot: 30
+    costOfPurchase: 10
+    costOfPlacement: 100
