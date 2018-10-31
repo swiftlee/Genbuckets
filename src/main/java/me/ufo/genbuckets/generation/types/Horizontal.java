@@ -26,35 +26,35 @@ public class Horizontal extends Generation {
 
         switch (this.getBlockFace()) {
             case NORTH:
-                toGenerate = addVectorByBlockFace(toGenerateLocation, BlockFace.NORTH, getHorizontalIndex());
+                toGenerate = addVectorByBlockFace(toGenerateLocation, BlockFace.NORTH, getIndex());
                 belowToGenerate = addVectorByBlockFace(toGenerateLocation, BlockFace.NORTH, 1);
 
-                toGenerateLocation.add(new Vector(0, 0, getHorizontalIndex()));
+                toGenerateLocation.add(new Vector(0, 0, getIndex()));
                 break;
             case EAST:
-                toGenerate = addVectorByBlockFace(toGenerateLocation, BlockFace.EAST, getHorizontalIndex());
+                toGenerate = addVectorByBlockFace(toGenerateLocation, BlockFace.EAST, getIndex());
                 belowToGenerate = addVectorByBlockFace(toGenerateLocation, BlockFace.EAST, 1);
 
-                toGenerateLocation.add(new Vector(getHorizontalIndex(), 0, 0));
+                toGenerateLocation.add(new Vector(getIndex(), 0, 0));
                 break;
             case SOUTH:
-                toGenerate = addVectorByBlockFace(toGenerateLocation, BlockFace.SOUTH, getHorizontalIndex());
+                toGenerate = addVectorByBlockFace(toGenerateLocation, BlockFace.SOUTH, getIndex());
                 belowToGenerate = addVectorByBlockFace(toGenerateLocation, BlockFace.SOUTH, 1);
 
-                toGenerateLocation.add(new Vector(0, 0, getHorizontalIndex()));
+                toGenerateLocation.add(new Vector(0, 0, getIndex()));
                 break;
             case WEST:
-                toGenerate = addVectorByBlockFace(toGenerateLocation, BlockFace.WEST, getHorizontalIndex());
+                toGenerate = addVectorByBlockFace(toGenerateLocation, BlockFace.WEST, getIndex());
                 belowToGenerate = addVectorByBlockFace(toGenerateLocation, BlockFace.WEST, 1);
 
-                toGenerateLocation.add(new Vector(getHorizontalIndex(), 0, 0));
+                toGenerateLocation.add(new Vector(getIndex(), 0, 0));
                 break;
         }
 
-        setHorizontalIndex(getHorizontalIndex() + 1);
+        setIndex(getIndex() + 1);
 
-        if (this.getHorizontalIndex() <= 80 && belowToGenerate.getType() == Material.AIR &&
-                    Factions.playerCanPlaceHere(this.getPlayer(), belowToGenerate)) {
+        if (this.getIndex() <= 80 && belowToGenerate.getType() == Material.AIR &&
+                Factions.playerCanPlaceHere(this.getPlayer(), belowToGenerate)) {
             toGenerate.setType(this.getMaterial());
         } else {
             toGenerate.setType(this.getMaterial());

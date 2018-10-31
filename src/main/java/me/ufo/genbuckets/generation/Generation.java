@@ -12,8 +12,7 @@ public abstract class Generation {
     private Material material;
     private Block block;
     private BlockFace blockFace;
-    private int y = 1;
-    private int horizontalIndex = 1;
+    private int index = 1;
     private boolean completed;
 
     public Generation(GenerationType generationType, Material material, Block block) {
@@ -48,12 +47,16 @@ public abstract class Generation {
         return block;
     }
 
-    public int getY() {
-        return y;
+    public BlockFace getBlockFace() {
+        return blockFace;
     }
 
-    public void setY(int y) {
-        this.y = y;
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
     }
 
     public boolean isCompleted() {
@@ -62,18 +65,6 @@ public abstract class Generation {
 
     public void setCompleted(boolean completed) {
         this.completed = completed;
-    }
-
-    public BlockFace getBlockFace() {
-        return blockFace;
-    }
-
-    public int getHorizontalIndex() {
-        return horizontalIndex;
-    }
-
-    public void setHorizontalIndex(int horizontalIndex) {
-        this.horizontalIndex = horizontalIndex;
     }
 
 }
