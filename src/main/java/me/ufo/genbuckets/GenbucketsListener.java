@@ -1,6 +1,7 @@
 package me.ufo.genbuckets;
 
 import me.ufo.genbuckets.buckets.Bucket;
+import me.ufo.genbuckets.generation.types.Horizontal;
 import me.ufo.genbuckets.generation.types.Vertical;
 import me.ufo.genbuckets.gui.impl.BucketsGUI;
 import me.ufo.genbuckets.integration.Econ;
@@ -41,6 +42,9 @@ public class GenbucketsListener implements Listener {
                     }
 
                     switch (bucket.getGenerationType()) {
+                        case HORIZONTAL:
+                            INSTANCE.getGenerationTask().addGeneration(new Horizontal(player, bucket.getMaterial(), block, event.getBlockFace()));
+                            break;
                         case VERTICAL:
                             INSTANCE.getGenerationTask().addGeneration(new Vertical(bucket.getMaterial(), block));
                             break;

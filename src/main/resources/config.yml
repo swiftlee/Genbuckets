@@ -1,15 +1,50 @@
+GUI:
+  title: "&eGenbuckets"
+  size: 27
+  stained-glass: 7
+
 VERTICAL:
   COBBLESTONE:
-    name: "&eCobblestone Genbucket"
+    name: "&eVertical Cobblestone Genbucket"
     lore:
     - "&c$30 per use"
-    slot: 29
+    slot: 10
+    costOfPurchase: 20
+    costOfPlacement: 30
+  SAND:
+    name: "&eVertical Sand Genbucket"
+    lore:
+    - "&c$30 per use"
+    slot: 11
     costOfPurchase: 20
     costOfPlacement: 30
   OBSIDIAN:
-    name: "&eObsidian Genbucket"
+    name: "&eVertical Obsidian Genbucket"
     lore:
     - "&c$100 per use"
-    slot: 30
+    slot: 12
+    costOfPurchase: 10
+    costOfPlacement: 100
+
+HORIZONTAL:
+  NETHERRACK:
+    name: "&eHorizontal Netherrack Genbucket"
+    lore:
+    - "&c$30 per use"
+    slot: 14
+    costOfPurchase: 20
+    costOfPlacement: 30
+  COBBLESTONE:
+    name: "&eHorizontal Cobblestone Genbucket"
+    lore:
+    - "&c$30 per use"
+    slot: 15
+    costOfPurchase: 20
+    costOfPlacement: 30
+  OBSIDIAN:
+    name: "&eHorizontal Obsidian Genbucket"
+    lore:
+    - "&c$100 per use"
+    slot: 16
     costOfPurchase: 10
     costOfPlacement: 100

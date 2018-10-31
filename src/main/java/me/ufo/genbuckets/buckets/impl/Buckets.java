@@ -19,6 +19,7 @@ public class Buckets {
 
     public void build() {
         ConfigurationSection vertical = INSTANCE.getConfig().getConfigurationSection("VERTICAL");
+        ConfigurationSection horizontal = INSTANCE.getConfig().getConfigurationSection("HORIZONTAL");
 
         vertical.getKeys(false).forEach(key -> {
             String name = INSTANCE.getConfig().getString("VERTICAL." + key + ".name");
@@ -36,6 +37,24 @@ public class Buckets {
             INSTANCE.getBucketsGUI().getBucketSlots().put(slot, item);
 
             buckets.add(new Bucket(name, item, GenerationType.VERTICAL, material, costOfPurchase, costOfPlacement));
+        });
+
+        horizontal.getKeys(false).forEach(key -> {
+            String name = INSTANCE.getConfig().getString("HORIZONTAL." + key + ".name");
+            int slot = INSTANCE.getConfig().getInt("HORIZONTAL." + key + ".slot");
+            double costOfPurchase = INSTANCE.getConfig().getDouble("HORIZONTAL." + key + ".costOfPurchase");
+            double costOfPlacement = INSTANCE.getConfig().getDouble("HORIZONTAL." + key + ".costOfPlacement");
+
+            ItemStack item = new ItemStack(Material.LAVA_BUCKET);
+            ItemMeta itemMeta = item.getItemMeta();
+            itemMeta.setDisplayName(Style.translate(name));
+            itemMeta.setLore(Style.translateLines(INSTANCE.getConfig().getStringList("HORIZONTAL." + key + ".lore")));
+            item.setItemMeta(itemMeta);
+
+            Material material = Material.getMaterial(key);
+            INSTANCE.getBucketsGUI().getBucketSlots().put(slot, item);
+
+            buckets.add(new Bucket(name, item, GenerationType.HORIZONTAL, material, costOfPurchase, costOfPlacement));
         });
 
     }
