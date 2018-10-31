@@ -53,8 +53,15 @@ public class Horizontal extends Generation {
 
         setIndex(getIndex() + 1);
 
-        if (this.getIndex() <= 80 && belowToGenerate.getType() == Material.AIR &&
-                Factions.playerCanPlaceHere(this.getPlayer(), belowToGenerate)) {
+        if (toGenerate.getType() != Material.AIR) {
+            this.setCompleted(true);
+            return;
+        }
+
+        if (this.getIndex() <= 80 &&
+                belowToGenerate.getType() == Material.AIR &&
+                    Factions.playerCanPlaceHere(this.getPlayer(), belowToGenerate)) {
+
             toGenerate.setType(this.getMaterial());
         } else {
             toGenerate.setType(this.getMaterial());
