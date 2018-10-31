@@ -6,6 +6,7 @@ import me.ufo.genbuckets.gui.impl.BucketsGUI;
 import me.ufo.genbuckets.integration.Econ;
 import me.ufo.genbuckets.integration.Factions;
 import me.ufo.genbuckets.io.DataFile;
+import me.ufo.genbuckets.lang.Messages;
 import me.ufo.genbuckets.task.GenerationTask;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -13,6 +14,7 @@ public class Genbuckets extends JavaPlugin {
 
     private static Genbuckets instance;
 
+    private Messages messages;
     private DataFile dataFile;
 
     private GenerationTask generationTask;
@@ -37,6 +39,10 @@ public class Genbuckets extends JavaPlugin {
         factions.setup();
 
         this.saveDefaultConfig();
+
+        messages = new Messages();
+        messages.build();
+
         dataFile = new DataFile("data.yml");
         dataFile.saveDefault();
 
@@ -58,6 +64,10 @@ public class Genbuckets extends JavaPlugin {
         this.getGenerationTask().haltTask();
 
         instance = null;
+    }
+
+    public Messages getMessages() {
+        return messages;
     }
 
     public DataFile getDataFile() {

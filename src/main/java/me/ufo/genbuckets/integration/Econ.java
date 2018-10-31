@@ -16,6 +16,11 @@ public class Econ {
         return er.transactionSuccess();
     }
 
+    public static boolean depositAmountToPlayer(Player player, double amount) {
+        EconomyResponse er = econ.depositPlayer(player, amount);
+        return er.transactionSuccess();
+    }
+
     public void setup() {
         if (!setupEconomy()) {
             Genbuckets.getInstance().getLogger().info("VAULT DEPENDENCY NOT FOUND.");

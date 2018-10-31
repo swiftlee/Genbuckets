@@ -47,7 +47,7 @@ public class BucketsGUI implements GUI, InventoryHolder {
                 if (bucketSlots.get(slot).equals(bucket.getItemStack())) {
                     if (transact(player, bucket)) {
                         player.getInventory().addItem(bucket.getItemStack().clone());
-                        player.sendMessage(Style.translate("&7You have been given a " + bucket.getName() + "&7."));
+                        player.sendMessage(Style.translate(INSTANCE.getMessages().GIVEN_BUCKET.replace("%bucket%", bucket.getName())));
                         break;
                     }
                 }
@@ -65,7 +65,7 @@ public class BucketsGUI implements GUI, InventoryHolder {
             DecimalFormat decimalFormat = new DecimalFormat(".##");
             double difference = cost - Econ.econ.getBalance(player);
 
-            player.getPlayer().sendMessage(Style.translate("&7You need &c$" + decimalFormat.format(difference) + " &7more to purchase a " + bucket.getName() + "&7."));
+            player.sendMessage(Style.translate(INSTANCE.getMessages().NOT_ENOUGH_FOR_PURCHASE.replace("%difference%", decimalFormat.format(difference)).replace("%bucket%", bucket.getName())));
             return false;
         }
     }

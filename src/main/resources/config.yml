@@ -3,6 +3,11 @@ GUI:
   size: 27
   stained-glass: 7
 
+MESSAGES:
+  given-bucket: "&7You have been given a %bucket%&7."
+  not-enough-for-purchase: "&7You need &c$%difference% &7more to purchase a %bucket%&7."
+  not-enough-for-placement: "&7You need &c$%difference% &7more to place this %bucket%&7."
+
 VERTICAL:
   COBBLESTONE:
     name: "&eVertical Cobblestone Genbucket"

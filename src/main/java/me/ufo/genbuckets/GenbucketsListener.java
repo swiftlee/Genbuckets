@@ -7,13 +7,16 @@ import me.ufo.genbuckets.gui.impl.BucketsGUI;
 import me.ufo.genbuckets.integration.Econ;
 import me.ufo.genbuckets.integration.Factions;
 import me.ufo.genbuckets.util.Style;
+import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerBucketEmptyEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.util.Vector;
 
 import java.text.DecimalFormat;
 
@@ -37,15 +40,23 @@ public class GenbucketsListener implements Listener {
                         DecimalFormat decimalFormat = new DecimalFormat(".##");
                         double difference = bucket.getCostOfPlacement() - Econ.econ.getBalance(player);
 
-                        player.sendMessage(Style.translate("&7You need &c$" + decimalFormat.format(difference) + " &7more to place this " + bucket.getName() + "&7."));
+                        player.sendMessage(Style.translate(INSTANCE.getMessages().NOT_ENOUGH_FOR_PLACEMENT.replace("%difference%", decimalFormat.format(difference)).replace("%bucket%", bucket.getName())));
                         return;
                     }
 
                     switch (bucket.getGenerationType()) {
                         case HORIZONTAL:
+                            if (event.getBlockFace() == BlockFace.UP || event.getBlockFace() == BlockFace.DOWN) {
+                                Econ.depositAmountToPlayer(player, bucket.getCostOfPlacement());
+                                return;
+                            }
                             INSTANCE.getGenerationTask().addGeneration(new Horizontal(player, bucket.getMaterial(), block, event.getBlockFace()));
                             break;
                         case VERTICAL:
+                            if (block.getLocation().add(new Vector(0, -1, 0)).getBlock().getType() != Material.AIR) {
+                                Econ.depositAmountToPlayer(player, bucket.getCostOfPlacement());
+                                return;
+                            }
                             INSTANCE.getGenerationTask().addGeneration(new Vertical(bucket.getMaterial(), block));
                             break;
                     }
