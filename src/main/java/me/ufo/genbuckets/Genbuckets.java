@@ -5,6 +5,7 @@ import me.ufo.genbuckets.commands.GenbucketsCommand;
 import me.ufo.genbuckets.gui.impl.BucketsGUI;
 import me.ufo.genbuckets.integration.Econ;
 import me.ufo.genbuckets.integration.Factions;
+import me.ufo.genbuckets.integration.Worldguard;
 import me.ufo.genbuckets.io.DataFile;
 import me.ufo.genbuckets.lang.Messages;
 import me.ufo.genbuckets.task.GenerationTask;
@@ -37,6 +38,9 @@ public class Genbuckets extends JavaPlugin {
 
         Factions factions = new Factions();
         factions.setup();
+
+        Worldguard worldguard = new Worldguard();
+        worldguard.setup();
 
         this.saveDefaultConfig();
 

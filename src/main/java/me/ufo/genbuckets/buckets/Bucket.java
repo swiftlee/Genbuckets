@@ -45,4 +45,5 @@ public class Bucket {
     public double getCostOfPlacement() {
         return costOfPlacement;
     }
+
 }

@@ -2,7 +2,7 @@ name: Genbuckets
 author: ufo
 version: 1.0
 main: me.ufo.genbuckets.Genbuckets
-depend: [Vault, Factions]
+depend: [Vault, Factions, WorldGuard]
 commands:
   genbuckets:
     aliases: [gb, genbucket, genshop, genblocks, gen]

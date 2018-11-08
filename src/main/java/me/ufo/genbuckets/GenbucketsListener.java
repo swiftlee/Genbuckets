@@ -6,6 +6,7 @@ import me.ufo.genbuckets.generation.types.Vertical;
 import me.ufo.genbuckets.gui.impl.BucketsGUI;
 import me.ufo.genbuckets.integration.Econ;
 import me.ufo.genbuckets.integration.Factions;
+import me.ufo.genbuckets.integration.Worldguard;
 import me.ufo.genbuckets.util.Style;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -36,6 +37,8 @@ public class GenbucketsListener implements Listener {
                     Player player = event.getPlayer();
 
                     if (!Factions.playerCanPlaceHere(player, block)) return;
+                    if (!Worldguard.playerCanPlaceHere(player, block)) return;
+
                     if (!Econ.withdrawAmountFromPlayer(player, bucket.getCostOfPlacement())) {
                         DecimalFormat decimalFormat = new DecimalFormat(".##");
                         double difference = bucket.getCostOfPlacement() - Econ.econ.getBalance(player);
