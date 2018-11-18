@@ -4,6 +4,7 @@ import me.ufo.genbuckets.generation.Generation;
 import me.ufo.genbuckets.generation.GenerationType;
 import me.ufo.genbuckets.integration.Factions;
 import me.ufo.genbuckets.integration.Worldguard;
+import me.ufo.genbuckets.util.Border;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -62,7 +63,8 @@ public class Horizontal extends Generation {
         if (this.getIndex() <= 80 &&
                 belowToGenerate.getType() == Material.AIR &&
                     Factions.playerCanPlaceHere(this.getPlayer(), belowToGenerate) &&
-                        Worldguard.playerCanPlaceHere(this.getPlayer(), belowToGenerate)) {
+                        Worldguard.playerCanPlaceHere(this.getPlayer(), belowToGenerate) &&
+                            !Border.isOutsideOfBorder(belowToGenerate)) {
 
             toGenerate.setType(this.getMaterial());
         } else {

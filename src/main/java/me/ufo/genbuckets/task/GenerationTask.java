@@ -14,12 +14,10 @@ public class GenerationTask implements Runnable {
     private int taskID;
 
     private void runTask() {
-        INSTANCE.getLogger().info("TASK STARTED.");
         taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(INSTANCE, this, 15L, 15L);
     }
 
     public void haltTask() {
-        INSTANCE.getLogger().info("TASK HALTED.");
         Bukkit.getServer().getScheduler().cancelTask(taskID);
     }
 
