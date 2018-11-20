@@ -8,6 +8,7 @@ import me.ufo.genbuckets.integration.Econ;
 import me.ufo.genbuckets.integration.Factions;
 import me.ufo.genbuckets.integration.Worldguard;
 import me.ufo.genbuckets.util.Style;
+import me.ufo.genbuckets.util.items.ItemBuilder;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -33,7 +34,7 @@ public class GenbucketsListener implements Listener {
             Block block = event.getBlockClicked().getRelative(event.getBlockFace());
 
             for (Bucket bucket : INSTANCE.getBuckets().getAllBuckets()) {
-                if (item.equals(bucket.getItemStack())) {
+                if (new ItemStack(new ItemBuilder(item.clone()).setAmount(1).build()).equals(bucket.getItemStack())) {
                     Player player = event.getPlayer();
 
                     if (!Factions.playerCanPlaceHere(player, block)) return;
