@@ -1,5 +1,6 @@
 package me.ufo.genbuckets.generation.types;
 
+import me.ufo.genbuckets.Genbuckets;
 import me.ufo.genbuckets.generation.Generation;
 import me.ufo.genbuckets.generation.GenerationType;
 import me.ufo.genbuckets.integration.Factions;
@@ -66,9 +67,9 @@ public class Horizontal extends Generation {
                         Worldguard.playerCanPlaceHere(this.getPlayer(), belowToGenerate) &&
                             !Border.isOutsideOfBorder(belowToGenerate)) {
 
-            toGenerate.setType(this.getMaterial());
+            Genbuckets.getInstance().getFastBlockUpdate().run(toGenerate.getLocation(), this.getMaterial());
         } else {
-            toGenerate.setType(this.getMaterial());
+            Genbuckets.getInstance().getFastBlockUpdate().run(toGenerate.getLocation(), this.getMaterial());
             this.setCompleted(true);
         }
     }

@@ -2,6 +2,8 @@ package me.ufo.genbuckets;
 
 import me.ufo.genbuckets.buckets.impl.Buckets;
 import me.ufo.genbuckets.commands.GenbucketsCommand;
+import me.ufo.genbuckets.fastblockupdate.FastBlockUpdate;
+import me.ufo.genbuckets.fastblockupdate.impl.FastBlockUpdate_1_8_R3;
 import me.ufo.genbuckets.gui.impl.BucketsGUI;
 import me.ufo.genbuckets.integration.Econ;
 import me.ufo.genbuckets.integration.Factions;
@@ -22,6 +24,8 @@ public class Genbuckets extends JavaPlugin {
 
     private Buckets buckets;
     private BucketsGUI bucketsGUI;
+
+    private FastBlockUpdate fastBlockUpdate;
 
     public static Genbuckets getInstance() {
         return instance;
@@ -57,6 +61,8 @@ public class Genbuckets extends JavaPlugin {
         buckets.build();
         bucketsGUI.build();
 
+        fastBlockUpdate = new FastBlockUpdate_1_8_R3();
+
         this.getCommand("genbuckets").setExecutor(new GenbucketsCommand());
         this.getServer().getPluginManager().registerEvents(new GenbucketsListener(), this);
 
@@ -88,6 +94,10 @@ public class Genbuckets extends JavaPlugin {
 
     public BucketsGUI getBucketsGUI() {
         return bucketsGUI;
+    }
+
+    public FastBlockUpdate getFastBlockUpdate() {
+        return fastBlockUpdate;
     }
 
 }
