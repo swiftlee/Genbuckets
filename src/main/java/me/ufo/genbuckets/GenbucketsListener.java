@@ -61,6 +61,11 @@ public class GenbucketsListener implements Listener {
                                 Econ.depositAmountToPlayer(player, bucket.getCostOfPlacement());
                                 return;
                             }
+
+                            if (bucket.getMaterial().hasGravity() && block.getLocation().getY() <= 4) {
+                                Econ.depositAmountToPlayer(player, bucket.getCostOfPlacement());
+                                return;
+                            }
                             INSTANCE.getGenerationTask().addGeneration(new Vertical(bucket.getMaterial(), block));
                             break;
                     }
