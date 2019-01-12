@@ -2,10 +2,7 @@ package me.ufo.genbuckets.fastblockupdate.impl;
 
 import me.ufo.genbuckets.Genbuckets;
 import me.ufo.genbuckets.fastblockupdate.FastBlockUpdate;
-import net.minecraft.server.v1_8_R3.Block;
-import net.minecraft.server.v1_8_R3.BlockPosition;
-import net.minecraft.server.v1_8_R3.IBlockData;
-import net.minecraft.server.v1_8_R3.World;
+import net.minecraft.server.v1_8_R3.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -21,9 +18,11 @@ public class FastBlockUpdate_1_8_R3 implements FastBlockUpdate {
     @Override
     public void run(Location location, Material material) {
         World w = ((CraftWorld) location.getWorld()).getHandle();
+        Chunk chunk = w.getChunkAt(location.getBlockX() >> 4, location.getBlockZ() >> 4);
         BlockPosition bp = new BlockPosition(location.getX(), location.getY(), location.getZ());
         IBlockData ibd = Block.getByCombinedId(material.getId());
-        Bukkit.getScheduler().runTask(Genbuckets.getInstance(), () -> w.setTypeAndData(bp, ibd, 2));
+        //Bukkit.getScheduler().runTask(Genbuckets.getInstance(), () -> w.setTypeAndData(bp, ibd, 2));
+        chunk.a(bp, ibd);
     }
 
 }
