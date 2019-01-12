@@ -11,5 +11,6 @@ import org.bukkit.Material;
 public interface FastBlockUpdate {
 
     void run(Location location, Material material);
+    void run(Location location, Material material, byte data);
 
 }
